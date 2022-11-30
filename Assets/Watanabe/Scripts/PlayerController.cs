@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void CloseMirror()
     {
+        Debug.Log(gameObject.transform.GetChild(0).name);
         transform.GetChild(0).gameObject.SetActive(false);
     }
 }

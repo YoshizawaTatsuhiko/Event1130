@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour
     private Animator _anim;
     /// <summary> AnimationÀs’†‚ÉA“ü—Í‚ğØ‚é </summary>
     private bool _isInput = true;
+    private ScoreManager _manager;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _manager = GameObject.Find("ScoreObject").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -82,6 +84,7 @@ public class PlayerController : MonoBehaviour
     public void GameOver()
     {
         //ScoreManager‚ÉGameOver‚Ì’Ê’m
+        _manager.Gameover();
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -90,7 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             if (col.gameObject.CompareTag("Meteorite"))
             {
-                _anim.Play("Vainsh");
+                _anim.Play("Vanish");
             }
         }
     }

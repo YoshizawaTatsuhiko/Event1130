@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 10
+  _isGodMode: 0
 --- !u!61 &8187397679717543515
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -203,6 +204,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8187397679717543527}
     m_Modifications:
+    - target: {fileID: 3985969290100402722, guid: fc42370983e85d84893401ae820ade28, type: 3}
+      propertyPath: _hitLayerNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985969290100402722, guid: fc42370983e85d84893401ae820ade28, type: 3}
+      propertyPath: _reflectPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985969290100402722, guid: fc42370983e85d84893401ae820ade28, type: 3}
+      propertyPath: _reflectLayerNum
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3985969290100402732, guid: fc42370983e85d84893401ae820ade28, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -263,7 +276,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2117368685, guid: fc42370983e85d84893401ae820ade28, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc42370983e85d84893401ae820ade28, type: 3}
 --- !u!4 &5102150929613417980 stripped
 Transform:
@@ -371,3 +385,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &876405279
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102150929613417982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06708702, y: -0.13417482}
+  m_Size: {x: 7.4506884, y: 12.405718}
+  m_Direction: 0

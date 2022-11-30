@@ -11,12 +11,13 @@ public class ScoreManager : MonoBehaviour
     private float _time; //経過時間
     [SerializeField] float _maxTime = 100.0f; //制限時間
     private bool ingame = true;
-    [SerializeField] Text TimerText;
+    [SerializeField] Text timerText;
     [SerializeField] Text resultScoreText;
     [SerializeField] Text highscoretext;
     [SerializeField] Text resulthighscoretext;
     [SerializeField] Text scoretext;
     [SerializeField] GameObject GameoverPanel;
+    [SerializeField] GameObject generator;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimerText.text = ((int)_time).ToString() + "s";
+        timerText.text = ((int)_time).ToString() + "s";
         scoretext.text = "スコア:" + _score.ToString();
 
         if (_highScore < _score) //もしハイスコアを更新したら
@@ -47,7 +48,6 @@ public class ScoreManager : MonoBehaviour
                 ingame = false;
             }
         }
-        Debug.Log(_time);
     }
     public void AddScore(int plusScorepoint) //スコアを増加させるメゾット
     {
@@ -59,6 +59,7 @@ public class ScoreManager : MonoBehaviour
         GameoverPanel.SetActive(true);
         resulthighscoretext.text = "ハイスコア:" + _highScore.ToString();
         resultScoreText.text = "スコア:" + _score.ToString();
+        generator.SetActive(false);
     }
 }
 

@@ -446,6 +446,11 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &535622476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5800693925150691358, guid: 4b0444ec9396de14c82948a8f41b7f76, type: 3}
+  m_PrefabInstance: {fileID: 1905191095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &565404423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,16 +1479,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5736958419784374593, guid: fc7b62cc9a34d144b87594bef33e61e2, type: 3}
       propertyPath: _maxTime
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -5736958419784374593, guid: fc7b62cc9a34d144b87594bef33e61e2, type: 3}
       propertyPath: TimerText
       value: 
       objectReference: {fileID: 1478163587}
     - target: {fileID: -5736958419784374593, guid: fc7b62cc9a34d144b87594bef33e61e2, type: 3}
+      propertyPath: generator
+      value: 
+      objectReference: {fileID: 535622476}
+    - target: {fileID: -5736958419784374593, guid: fc7b62cc9a34d144b87594bef33e61e2, type: 3}
       propertyPath: scoretext
       value: 
       objectReference: {fileID: 1596762456}
+    - target: {fileID: -5736958419784374593, guid: fc7b62cc9a34d144b87594bef33e61e2, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1478163587}
     - target: {fileID: -5736958419784374593, guid: fc7b62cc9a34d144b87594bef33e61e2, type: 3}
       propertyPath: GameoverPanel
       value: 

@@ -22,12 +22,16 @@ public class MeteoriteGenerator : MonoBehaviour
 
     private void Update()
     {
+        float randomX = Random.Range(-_box.size.x / 2, _box.size.x / 2);
+        float randomY = Random.Range(-_box.size.y / 2, _box.size.y / 2);
         int n = Random.Range(0, _meteorite.Length);
         _timer += Time.deltaTime;
 
         if(_timer >= _interval)
         {
-            Instantiate(_meteorite[n], transform.position, Quaternion.identity);
+            GameObject meteorite = Instantiate(_meteorite[n]);
+            meteorite.transform.position =
+                new Vector2(randomX + transform.position.x, randomY + transform.position.y);
             _timer = 0f;
         }
     }

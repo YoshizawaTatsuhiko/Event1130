@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
 {
     [Tooltip("移動速度")]
     [SerializeField] private float _moveSpeed = 1f;
+    [Tooltip("テスト用の無敵状態")]
+    [SerializeField] private bool _isGodMode;
 
     /// <summary> Rigidbody2D </summary>
     private Rigidbody2D _rb2d;
     /// <summary> PlayerのAnimation </summary>
     private Animator _anim;
+    /// <summary> Animation実行中に、入力を切る </summary>
     private bool _isInput = true;
 
     // Start is called before the first frame update
@@ -74,5 +77,21 @@ public class PlayerController : MonoBehaviour
     {
         transform.GetChild(0).gameObject.SetActive(false);
         _isInput = true;
+    }
+
+    public void GameOver()
+    {
+        //ScoreManagerにGameOverの通知
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (_isGodMode == false)
+        {
+            if (col.gameObject.CompareTag("Meteorite"))
+            {
+                _anim.Play("Vainsh");
+            }
+        }
     }
 }

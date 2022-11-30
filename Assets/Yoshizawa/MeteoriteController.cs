@@ -15,7 +15,7 @@ public class MeteoriteController : MonoBehaviour
     /// <summary>Rigidbody2DŒ^‚Ì•Ï”</summary>
     private Rigidbody2D _rb;
     /// <summary>”½Ë‚µ‚Ä‚«‚½è¦Î‚ÌƒŒƒCƒ„[</summary>
-    private int _layer = 6;
+    private int _reflectedObjectLayer = 6;
     /// <summary>ScoreManagerŒ^‚Ì•Ï”</summary>
     private ScoreManager _scoreManager;
     /// <summary>è¦Î‚Ì¶‘¶ŠÔ</summary>
@@ -39,7 +39,7 @@ public class MeteoriteController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == _layer)
+        if (collision.gameObject.layer == _reflectedObjectLayer)
         {
             _scoreManager.AddScore(_score);
             if (_onDestroy != null) Instantiate(_onDestroy);

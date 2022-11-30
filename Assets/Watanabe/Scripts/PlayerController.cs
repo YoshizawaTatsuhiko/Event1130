@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var hol = Input.GetAxisRaw("Horizontal");
-
         if (_isInput == true)
         {
+            var hol = Input.GetAxisRaw("Horizontal");
+
             _anim.SetFloat("MoveSpeed", Mathf.Abs(hol));
             _anim.SetBool("MirrorSet", false);
             _rb2d.velocity = new Vector2(hol * _moveSpeed, _rb2d.velocity.y);

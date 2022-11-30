@@ -18,23 +18,30 @@ public class MeteoriteController : MonoBehaviour
     private int _layer = 6;
     /// <summary>ScoreManagerå^ÇÃïœêî</summary>
     private ScoreManager _scoreManager;
+    /// <summary>Ë¶êŒÇÃê∂ë∂éûä‘</summary>
+    private float _lifeTime = 4f;
 
     private void Start()
     {
         _scoreManager = FindObjectOfType<ScoreManager>();
         _player = GameObject.FindGameObjectWithTag("Player");
+
         _rb = GetComponent<Rigidbody2D>();
         transform.up = _player.transform.position;
         Vector2 vec = _player.transform.position - transform.position;
-        _rb.velocity = vec * _speed;
+        _rb.velocity = vec.normalized * _speed;
+
+        Destroy(gameObject, _lifeTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.layer == _layer)
+        if (collision.gameObject.layer == _layer)
         {
-            _scoreManager.AddScore(_score);
+            //_scoreManager.AddScore(_score);
+            Destroy(collision.gameObject);
             Destroy(gameObject);
+            Debug.Log("OK!");
         }
     }
 }

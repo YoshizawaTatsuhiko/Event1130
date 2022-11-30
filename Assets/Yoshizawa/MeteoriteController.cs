@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CapsuleCollider2D), typeof(Rigidbody2D)/*, typeof()*/)]
+[RequireComponent(typeof(CapsuleCollider2D), typeof(Rigidbody2D))]
 
 public class MeteoriteController : MonoBehaviour
 {
@@ -20,11 +20,14 @@ public class MeteoriteController : MonoBehaviour
     private ScoreManager _scoreManager;
     /// <summary>Ë¶êŒÇÃê∂ë∂éûä‘</summary>
     private float _lifeTime = 4f;
+    [SerializeField, Tooltip("GameObjectÇ™è¡é∏éûÇ…ê∂ê¨Ç∑ÇÈ")]
+    private GameObject _onDestroy;
+    
 
     private void Start()
     {
-        _scoreManager = FindObjectOfType<ScoreManager>();
         _player = GameObject.FindGameObjectWithTag("Player");
+        _scoreManager = FindObjectOfType<ScoreManager>();
 
         _rb = GetComponent<Rigidbody2D>();
         transform.up = _player.transform.position;
@@ -38,7 +41,8 @@ public class MeteoriteController : MonoBehaviour
     {
         if (collision.gameObject.layer == _layer)
         {
-            //_scoreManager.AddScore(_score);
+            _scoreManager.AddScore(_score);
+            if (_onDestroy != null) Instantiate(_onDestroy);
             Destroy(collision.gameObject);
             Destroy(gameObject);
             Debug.Log("OK!");

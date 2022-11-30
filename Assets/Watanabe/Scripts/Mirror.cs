@@ -7,7 +7,8 @@ public class Mirror : MonoBehaviour
     [Tooltip("Layerの番号")]
     [SerializeField] private int _layerNum = 0;
 
-    private void OnTriggerEnter2D(Collider2D col)
+
+    private void OnCollisionEnter2D(Collision2D col)
     {
         //当たったオブジェクトを跳ね返す
         Debug.Log("跳ね返します");
@@ -19,5 +20,6 @@ public class Mirror : MonoBehaviour
 
         hitRb.velocity = reflect;
         col.gameObject.layer = _layerNum;
+        Debug.Log(col.gameObject.layer);
     }
 }

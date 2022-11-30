@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8187397679717543524}
   - component: {fileID: 8187397679717543515}
   - component: {fileID: 8187397679717543514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -250,6 +250,10 @@ PrefabInstance:
     - target: {fileID: 3985969290100402734, guid: fc42370983e85d84893401ae820ade28, type: 3}
       propertyPath: m_Name
       value: Mirror
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985969290100402734, guid: fc42370983e85d84893401ae820ade28, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3985969290100402734, guid: fc42370983e85d84893401ae820ade28, type: 3}
       propertyPath: m_IsActive

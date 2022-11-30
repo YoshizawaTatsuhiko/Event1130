@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour
 {
-    [Tooltip("跳ね返す力")]
-    [SerializeField] private float _reflectPower = 1f;
+    [Tooltip("Layerの番号")]
+    [SerializeField] private int _layerNum = 0;
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         //当たったオブジェクトを跳ね返す
         Debug.Log("跳ね返します");
@@ -18,5 +18,6 @@ public class Mirror : MonoBehaviour
         //b...当たった面の法線ベクトル(正規化されている必要がある)
 
         hitRb.velocity = reflect;
+        col.gameObject.layer = _layerNum;
     }
 }

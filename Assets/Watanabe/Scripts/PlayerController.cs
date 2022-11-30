@@ -7,42 +7,58 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    [Header("PlayerStatus一覧")]
     [Tooltip("移動速度")]
     [SerializeField] private float _moveSpeed = 1f;
-    [Tooltip("ジャンプ力")]
-    [SerializeField] private float _jumpPower = 1f;
 
     /// <summary> Rigidbody2D </summary>
     private Rigidbody2D _rb2d;
-    /// <summary> 接地判定 </summary>
-    private bool _isGround = false;
+    /// <summary> PlayerのAnimation </summary>
+    private Animator _anim;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var h = Input.GetAxisRaw("Horizontal");
-        _rb2d.velocity = new Vector2(h * _moveSpeed, _rb2d.velocity.y);
+        var hol = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && _isGround == true)
+        _anim.SetFloat("MoveSpeed", Mathf.Abs(hol));
+        _anim.SetBool("MirrorSet", false);
+        _rb2d.velocity = new Vector2(hol * _moveSpeed, _rb2d.velocity.y);
+
+        if (hol != 0)
         {
-            Debug.Log("Jump");
-            _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
-            _isGround = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+            if (hol > 0)
+            {
+                var scale = transform.localScale;
+                scale.x = -1;
+                transform.localScale = scale;
+            }
+            else if (hol < 0)
+            {
+                var scale = transform.localScale;
+                scale.x = 1;
+                transform.localScale = scale;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _anim.SetBool("MirrorSet", true);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    /// <summary>
+    /// 鏡を出す(AnimationEventで実行)
+    /// </summary>
+    public void SetMirror()
     {
-        if (col.tag == "Ground")
-        {
-            _isGround = true;
-        }
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 }

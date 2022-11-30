@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     private int _highScore; //ハイスコア
     private float _time; //経過時間
     [SerializeField] float _maxTime = 100.0f; //制限時間
+    [SerializeField] int _clearScore = 500;
     private bool ingame = true;
     [SerializeField] Text timerText;
     [SerializeField] Text resultScoreText;
@@ -44,6 +45,7 @@ public class ScoreManager : MonoBehaviour
             _time -= Time.deltaTime; //タイマー
             if (_time <= 0) //タイムアップ時
             {
+                AddScore(_clearScore);
                 Gameover();
                 ingame = false;
             }

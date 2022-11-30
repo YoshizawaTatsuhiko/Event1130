@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
+        _isInput = false;
         //ScoreManager‚ÉGameOver‚Ì’Ê’m
         _manager.Gameover();
     }

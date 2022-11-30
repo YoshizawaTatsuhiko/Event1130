@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D)/*, typeof()*/)]
+[RequireComponent(typeof(CapsuleCollider2D), typeof(Rigidbody2D)/*, typeof()*/)]
 
 public class MeteoriteController : MonoBehaviour
 {

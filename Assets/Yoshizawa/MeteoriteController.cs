@@ -45,6 +45,7 @@ public class MeteoriteController : MonoBehaviour
             if (_onDestroy != null) Instantiate(_onDestroy);
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            Debug.Log("OK!");
         }
     }
 }

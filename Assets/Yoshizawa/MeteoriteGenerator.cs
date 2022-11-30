@@ -25,9 +25,10 @@ public class MeteoriteGenerator : MonoBehaviour
         int n = Random.Range(0, _meteorite.Length);
         _timer += Time.deltaTime;
 
-        if(_timer > _interval)
+        if(_timer >= _interval)
         {
             Instantiate(_meteorite[n], transform.position, Quaternion.identity);
+            _timer = 0f;
         }
     }
 }

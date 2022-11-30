@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D))]
+[RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D)/*, typeof()*/)]
 
 public class MeteoriteController : MonoBehaviour
 {
@@ -14,13 +14,27 @@ public class MeteoriteController : MonoBehaviour
     private GameObject _player;
     /// <summary>Rigidbody2DŒ^‚Ì•Ï”</summary>
     private Rigidbody2D _rb;
+    /// <summary>”½Ë‚µ‚Ä‚«‚½è¦Î‚ÌƒŒƒCƒ„[</summary>
+    private int _layer = 6;
+    /// <summary>ScoreManagerŒ^‚Ì•Ï”</summary>
+    private ScoreManager _scoreManager;
 
     private void Start()
     {
+        _scoreManager = FindObjectOfType<ScoreManager>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _rb = GetComponent<Rigidbody2D>();
         transform.up = _player.transform.position;
         Vector2 vec = _player.transform.position - transform.position;
         _rb.velocity = vec * _speed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == _layer)
+        {
+            _scoreManager.AddScore(_score);
+            Destroy(gameObject);
+        }
     }
 }

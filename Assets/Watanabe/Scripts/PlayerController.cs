@@ -61,4 +61,12 @@ public class PlayerController : MonoBehaviour
     {
         transform.GetChild(0).gameObject.SetActive(true);
     }
+
+    /// <summary>
+    /// ‹¾‚ğd•‘‚¤(AnimationEvent‚ÅÀs)
+    /// </summary>
+    public void CloseMirror()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
 }

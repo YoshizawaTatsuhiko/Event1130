@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour
 {
+    [Tooltip("反射する力")]
+    [SerializeField] private float _reflectPower = 1f;
     [Tooltip("Layerの番号")]
     [SerializeField] private int _layerNum = 0;
 
@@ -18,8 +20,7 @@ public class Mirror : MonoBehaviour
         //a...入射ベクトル
         //b...当たった面の法線ベクトル(正規化されている必要がある)
 
-        hitRb.velocity = reflect;
+        hitRb.velocity = reflect * _reflectPower;
         col.gameObject.layer = _layerNum;
-        Debug.Log(col.gameObject.layer);
     }
 }

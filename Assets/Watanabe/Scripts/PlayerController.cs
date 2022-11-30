@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb2d;
     /// <summary> Player‚ÌAnimation </summary>
     private Animator _anim;
+    private bool _isInput = true;
 
     // Start is called before the first frame update
     void Start()
@@ -27,30 +28,34 @@ public class PlayerController : MonoBehaviour
     {
         var hol = Input.GetAxisRaw("Horizontal");
 
-        _anim.SetFloat("MoveSpeed", Mathf.Abs(hol));
-        _anim.SetBool("MirrorSet", false);
-        _rb2d.velocity = new Vector2(hol * _moveSpeed, _rb2d.velocity.y);
-
-        if (hol != 0)
+        if (_isInput == true)
         {
-            transform.GetChild(0).gameObject.SetActive(false);
-            if (hol > 0)
-            {
-                var scale = transform.localScale;
-                scale.x = -1;
-                transform.localScale = scale;
-            }
-            else if (hol < 0)
-            {
-                var scale = transform.localScale;
-                scale.x = 1;
-                transform.localScale = scale;
-            }
-        }
+            _anim.SetFloat("MoveSpeed", Mathf.Abs(hol));
+            _anim.SetBool("MirrorSet", false);
+            _rb2d.velocity = new Vector2(hol * _moveSpeed, _rb2d.velocity.y);
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            _anim.SetBool("MirrorSet", true);
+            if (hol != 0)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+                if (hol > 0)
+                {
+                    var scale = transform.localScale;
+                    scale.x = -1;
+                    transform.localScale = scale;
+                }
+                else if (hol < 0)
+                {
+                    var scale = transform.localScale;
+                    scale.x = 1;
+                    transform.localScale = scale;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _anim.SetBool("MirrorSet", true);
+                _isInput = false;
+            }
         }
     }
 
@@ -67,7 +72,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void CloseMirror()
     {
-        Debug.Log(gameObject.transform.GetChild(0).name);
         transform.GetChild(0).gameObject.SetActive(false);
+        _isInput = true;
     }
 }

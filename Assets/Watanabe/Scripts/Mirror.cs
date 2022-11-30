@@ -11,9 +11,18 @@ public class Mirror : MonoBehaviour
     [Tooltip("当たったオブジェクトのLayerの番号")]
     [SerializeField] private int _hitLayerNum = 0;
 
+    /// <summary> AudioSource </summary>
+    private AudioSource _audio;
+
+    private void Start()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
+
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        _audio.Play();
         if (col.gameObject.layer == _hitLayerNum)
         {
             //当たったオブジェクトを跳ね返す
